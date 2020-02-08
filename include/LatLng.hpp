@@ -14,16 +14,32 @@
 #ifndef GEOMETRY_LIBRARY_LATLNG
 #define GEOMETRY_LIBRARY_LATLNG
 
-struct LatLng {
-	double lat;
-	double lng;
+#include <cmath>
 
-	LatLng(double lat, double lng)
-		: lat(lat), lng(lng) {};
+class LatLng {
+public:
+	double lat; // The latitude  of this location
+	double lng; // The longitude of this location
+
+    /**
+     * Constructs a location with a latitude/longitude pair.
+     *
+     * @param lat   The latitude  of this location.
+     * @param lng   The longitude of this location.
+     */
+    LatLng(double lat, double lng)
+        : lat(lat), lng(lng) {}
 
 	bool operator==(const LatLng& other) {
-		return lat == other.lat && lng == other.lng;
+		return isCoordinateEqual(lat, other.lat) && 
+               isCoordinateEqual(lng, other.lng);
 	}
+
+
+private:
+    bool isCoordinateEqual(double first, double second) {
+        return std::fabs(first - second) < 1e-12;
+    }
 };
 
 #endif // GEOMETRY_LIBRARY_LATLNG

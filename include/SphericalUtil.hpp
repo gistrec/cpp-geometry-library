@@ -86,7 +86,7 @@ public:
 		double n1 = cos(distance);
 		double n2 = sin(distance) * cos(heading);
 		double n3 = sin(distance) * sin(heading);
-		double n4 = sin(rad2deg(to.lat));
+		double n4 = sin(deg2rad(to.lat));
 		// There are two solutions for b. b = n2 * n4 +/- sqrt(), one solution results
 		// in the latitude outside the [-90, 90] range. We first try one solution and
 		// back off to the other if we are outside that range.
@@ -181,8 +181,8 @@ public:
 			double lat = deg2rad(point.lat);
 			double lng = deg2rad(point.lng);
 			length += SphericalUtil::distanceRadians(prevLat, prevLng, lat, lng);
-			double prevLat = lat;
-			double prevLng = lng;
+			prevLat = lat;
+			prevLng = lng;
 		}
 		return length * MathUtil::EARTH_RADIUS;
 	}
@@ -239,8 +239,8 @@ private:
 			double tanLat = tan((M_PI / 2 - deg2rad(point.lat)) / 2);
 			double lng = deg2rad(point.lng);
 			total += SphericalUtil::polarTriangleArea(tanLat, lng, prevTanLat, prevLng);
-			double prevTanLat = tanLat;
-			double prevLng = lng;
+			prevTanLat = tanLat;
+			prevLng = lng;
 		}
 		return total * (radius * radius);
 	}
