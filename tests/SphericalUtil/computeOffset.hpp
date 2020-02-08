@@ -2,13 +2,12 @@
 
 #include "SphericalUtil.hpp"
 
-inline void EXPECT_NEAR_LatLan(LatLng actual, LatLng expected) {
-	EXPECT_NEAR(actual.lat, expected.lat, 1e-6);
+#define EXPECT_NEAR_LatLan(actual, expected) \
+    EXPECT_NEAR(actual.lat, expected.lat, 1e-6);
     // Issue #2
 	// Account for the convergence of longitude lines at the poles
 	// double cosLat = cos(deg2rad(actual.lat));
 	// EXPECT_NEAR(cosLat * actual.lng, cosLat * expected.lng, 1e-6);
-}
 
 TEST(SphericalUtil, computeOffset) {
     LatLng up    = { 90.0,    0.0 };

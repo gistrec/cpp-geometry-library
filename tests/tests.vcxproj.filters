@@ -6,35 +6,38 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SphericalUtil/computeAngleBetween.cpp">
-      <Filter>SphericalUtil</Filter>
-    </ClCompile>
-    <ClCompile Include="SphericalUtil/computeDistanceBetween.cpp">
-      <Filter>SphericalUtil</Filter>
-    </ClCompile>
-    <ClCompile Include="SphericalUtil/computeHeading.cpp">
-      <Filter>SphericalUtil</Filter>
-    </ClCompile>
-    <ClCompile Include="SphericalUtil/computeOffset.cpp">
-      <Filter>SphericalUtil</Filter>
-    </ClCompile>
-    <ClCompile Include="SphericalUtil/computeOffsetOrigin.cpp">
-      <Filter>SphericalUtil</Filter>
-    </ClCompile>
-    <ClCompile Include="SphericalUtil/interpolate.cpp">
-      <Filter>SphericalUtil</Filter>
-    </ClCompile>
-    <ClCompile Include="SphericalUtil/computeLength.cpp">
-      <Filter>SphericalUtil</Filter>
-    </ClCompile>
-    <ClCompile Include="SphericalUtil/computeArea.cpp">
-      <Filter>SphericalUtil</Filter>
-    </ClCompile>
-    <ClCompile Include="SphericalUtil/computeSignedArea.cpp">
-      <Filter>SphericalUtil</Filter>
-    </ClCompile>
+    <ClCompile Include="Tests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="SphericalUtil\computeAngleBetween.hpp">
+      <Filter>SphericalUtil</Filter>
+    </ClInclude>
+    <ClInclude Include="SphericalUtil\computeArea.hpp">
+      <Filter>SphericalUtil</Filter>
+    </ClInclude>
+    <ClInclude Include="SphericalUtil\computeDistanceBetween.hpp">
+      <Filter>SphericalUtil</Filter>
+    </ClInclude>
+    <ClInclude Include="SphericalUtil\computeHeading.hpp">
+      <Filter>SphericalUtil</Filter>
+    </ClInclude>
+    <ClInclude Include="SphericalUtil\computeLength.hpp">
+      <Filter>SphericalUtil</Filter>
+    </ClInclude>
+    <ClInclude Include="SphericalUtil\computeOffset.hpp">
+      <Filter>SphericalUtil</Filter>
+    </ClInclude>
+    <ClInclude Include="SphericalUtil\computeOffsetOrigin.hpp">
+      <Filter>SphericalUtil</Filter>
+    </ClInclude>
+    <ClInclude Include="SphericalUtil\computeSignedArea.hpp">
+      <Filter>SphericalUtil</Filter>
+    </ClInclude>
+    <ClInclude Include="SphericalUtil\interpolate.hpp">
+      <Filter>SphericalUtil</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

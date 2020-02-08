@@ -33,24 +33,27 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);../geometry-library/</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);../include/</IncludePath>
+    <Microsoft-googletest-v140-windesktop-msvcstl-static-rt-dyn-Disable-gtest_main>true</Microsoft-googletest-v140-windesktop-msvcstl-static-rt-dyn-Disable-gtest_main>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);../geometry-library/</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);../include/</IncludePath>
+    <Microsoft-googletest-v140-windesktop-msvcstl-static-rt-dyn-Disable-gtest_main>true</Microsoft-googletest-v140-windesktop-msvcstl-static-rt-dyn-Disable-gtest_main>
   </PropertyGroup>
   <ItemGroup>
-    <ClCompile Include="SphericalUtil/computeAngleBetween.cpp" />
-    <ClCompile Include="SphericalUtil/computeArea.cpp" />
-    <ClCompile Include="SphericalUtil/computeDistanceBetween.cpp" />
-    <ClCompile Include="SphericalUtil/computeHeading.cpp" />
-    <ClCompile Include="SphericalUtil/computeLength.cpp" />
-    <ClCompile Include="SphericalUtil/computeOffset.cpp" />
-    <ClCompile Include="SphericalUtil/computeOffsetOrigin.cpp" />
-    <ClCompile Include="SphericalUtil/computeSignedArea.cpp" />
-    <ClCompile Include="SphericalUtil/interpolate.cpp" />
+    <ClInclude Include="SphericalUtil\computeAngleBetween.hpp" />
+    <ClInclude Include="SphericalUtil\computeArea.hpp" />
+    <ClInclude Include="SphericalUtil\computeDistanceBetween.hpp" />
+    <ClInclude Include="SphericalUtil\computeHeading.hpp" />
+    <ClInclude Include="SphericalUtil\computeLength.hpp" />
+    <ClInclude Include="SphericalUtil\computeOffset.hpp" />
+    <ClInclude Include="SphericalUtil\computeOffsetOrigin.hpp" />
+    <ClInclude Include="SphericalUtil\computeSignedArea.hpp" />
+    <ClInclude Include="SphericalUtil\interpolate.hpp" />
+    <ClCompile Include="Tests.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\geometry-library\geometry-library.vcxproj">
+    <ProjectReference Include="..\include\geometry-library.vcxproj">
       <Project>{6ff667f1-262a-4779-81cf-fd346fe2af62}</Project>
     </ProjectReference>
   </ItemGroup>
@@ -82,7 +85,8 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>X64;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
@@ -90,6 +94,7 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <AdditionalIncludeDirectories>$(MSBuildThisFileDirectory)include;%(AdditionalIncludeDirectories);$(SolutionDir)/include/</AdditionalIncludeDirectories>
+      <PrecompiledHeaderOutputFile />
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -116,12 +121,14 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
       <PreprocessorDefinitions>X64;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <AdditionalIncludeDirectories>$(MSBuildThisFileDirectory)include;%(AdditionalIncludeDirectories);$(SolutionDir)/include/</AdditionalIncludeDirectories>
+      <PrecompiledHeaderOutputFile />
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>

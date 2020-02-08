@@ -3,21 +3,21 @@
 #include "SphericalUtil.hpp"
 
 
-inline void EXPECT_NEAR_LatLan(LatLng actual, LatLng expected) {
+#define EXPECT_NEAR_LatLan(actual, expected) \
     EXPECT_NEAR(actual.lat, expected.lat, 1e-6);
     // Issue #2
     // Account for the convergence of longitude lines at the poles
     // double cosLat = cos(deg2rad(actual.lat));
     // EXPECT_NEAR(cosLat * actual.lng, cosLat * expected.lng, 1e-6);
-}
+
 
 TEST(SphericalUtil, interpolate) {
-    LatLng up(90, 0);
-    LatLng down(-90, 0);
-    LatLng front(0, 0);
-    LatLng right(0, 90);
-    LatLng back(0, -180);
-    LatLng left(0, -90);
+    LatLng up    = { 90.0,    0.0 };
+    LatLng down  = {-90.0,    0.0 };
+    LatLng front = {  0.0,    0.0 };
+    LatLng right = {  0.0,   90.0 };
+    LatLng back  = {  0.0, -180.0 };
+    LatLng left  = {  0.0,  -90.0 };
 
     EXPECT_NEAR_LatLan(up,   SphericalUtil::interpolate(up,     up, 1 / 2.0));
     EXPECT_NEAR_LatLan(down, SphericalUtil::interpolate(down, down, 1 / 2.0));
