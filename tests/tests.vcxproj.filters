@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="SphericalUtil">
+      <UniqueIdentifier>{4fbd4f21-7e3a-4fd2-9bfa-29dc154dc6d7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="SphericalUtil/computeAngleBetween.cpp">
+      <Filter>SphericalUtil</Filter>
+    </ClCompile>
+    <ClCompile Include="SphericalUtil/computeDistanceBetween.cpp">
+      <Filter>SphericalUtil</Filter>
+    </ClCompile>
+    <ClCompile Include="SphericalUtil/computeHeading.cpp">
+      <Filter>SphericalUtil</Filter>
+    </ClCompile>
+    <ClCompile Include="SphericalUtil/computeOffset.cpp">
+      <Filter>SphericalUtil</Filter>
+    </ClCompile>
+    <ClCompile Include="SphericalUtil/computeOffsetOrigin.cpp">
+      <Filter>SphericalUtil</Filter>
+    </ClCompile>
+    <ClCompile Include="SphericalUtil/interpolate.cpp">
+      <Filter>SphericalUtil</Filter>
+    </ClCompile>
+    <ClCompile Include="SphericalUtil/computeLength.cpp">
+      <Filter>SphericalUtil</Filter>
+    </ClCompile>
+    <ClCompile Include="SphericalUtil/computeArea.cpp">
+      <Filter>SphericalUtil</Filter>
+    </ClCompile>
+    <ClCompile Include="SphericalUtil/computeSignedArea.cpp">
+      <Filter>SphericalUtil</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+</Project>
