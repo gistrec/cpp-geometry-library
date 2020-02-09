@@ -41,6 +41,10 @@
     <Microsoft-googletest-v140-windesktop-msvcstl-static-rt-dyn-Disable-gtest_main>true</Microsoft-googletest-v140-windesktop-msvcstl-static-rt-dyn-Disable-gtest_main>
   </PropertyGroup>
   <ItemGroup>
+    <ClInclude Include="PolyUtil\containsLocation.hpp" />
+    <ClInclude Include="PolyUtil\distanceToLine.hpp" />
+    <ClInclude Include="PolyUtil\isLocationOnEdge.hpp" />
+    <ClInclude Include="PolyUtil\isLocationOnPath.hpp" />
     <ClInclude Include="SphericalUtil\computeAngleBetween.hpp" />
     <ClInclude Include="SphericalUtil\computeArea.hpp" />
     <ClInclude Include="SphericalUtil\computeDistanceBetween.hpp" />

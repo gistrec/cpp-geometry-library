@@ -4,6 +4,9 @@
     <Filter Include="SphericalUtil">
       <UniqueIdentifier>{4fbd4f21-7e3a-4fd2-9bfa-29dc154dc6d7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="PolyUtil">
+      <UniqueIdentifier>{1498a4c7-50db-40b7-a717-9cf9f748a7fb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Tests.cpp" />
@@ -38,6 +41,18 @@
     </ClInclude>
     <ClInclude Include="SphericalUtil\interpolate.hpp">
       <Filter>SphericalUtil</Filter>
+    </ClInclude>
+    <ClInclude Include="PolyUtil\containsLocation.hpp">
+      <Filter>PolyUtil</Filter>
+    </ClInclude>
+    <ClInclude Include="PolyUtil\isLocationOnEdge.hpp">
+      <Filter>PolyUtil</Filter>
+    </ClInclude>
+    <ClInclude Include="PolyUtil\isLocationOnPath.hpp">
+      <Filter>PolyUtil</Filter>
+    </ClInclude>
+    <ClInclude Include="PolyUtil\distanceToLine.hpp">
+      <Filter>PolyUtil</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -9,6 +9,11 @@
 #include "SphericalUtil/computeOffsetOrigin.hpp"
 #include "SphericalUtil/computeDistanceBetween.hpp"
 
+#include "PolyUtil/containsLocation.hpp"
+#include "PolyUtil/isLocationOnEdge.hpp"
+#include "PolyUtil/isLocationOnPath.hpp"
+#include "PolyUtil/distanceToLine.hpp"
+
 
 int main(int argc, char** argv) {
     testing::InitGoogleTest(&argc, argv);

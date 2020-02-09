@@ -32,7 +32,7 @@ public:
 	 * (loxodromic) segments otherwise.
 	 */
 	template <typename LatLngList>
-	static inline double containsLocation(LatLng point, LatLngList polygon, bool geodesic = false) {
+	static inline bool containsLocation(LatLng point, LatLngList polygon, bool geodesic = false) {
 		size_t size = polygon.size();
 
 		if (size == 0) {
@@ -147,7 +147,7 @@ public:
 				double lat2 = deg2rad(val.lat);
 				double y2 = MathUtil::mercator(lat2);
 				double lng2 = deg2rad(val.lng);
-				if (max(lat1, lat2) >= minAcceptable && min(lat1, lat2) <= maxAcceptable) {
+				if (std::max(lat1, lat2) >= minAcceptable && std::min(lat1, lat2) <= maxAcceptable) {
 					// We offset longitudes by -lng1; the implicit x1 is 0.
 					double x2 = MathUtil::wrap(lng2 - lng1, -M_PI, M_PI);
 					double x3Base = MathUtil::wrap(lng3 - lng1, -M_PI, M_PI);
@@ -205,9 +205,8 @@ public:
 		if (u >= 1) {
 			return SphericalUtil::computeDistanceBetween(p, end);
 		}
-		LatLng sa = LatLng(p.lat - start.lat, p.lng - start.lng);
-		LatLng sb = LatLng(u * (end.lat - start.lat), (u * (end.lng - start.lng)));
-		return SphericalUtil::computeDistanceBetween(sa, sb);
+		LatLng su(start.lat + u * (end.lat - start.lat), start.lng + u * (end.lng - start.lng));
+        return SphericalUtil::computeDistanceBetween(p, su);
 	}
 
 
