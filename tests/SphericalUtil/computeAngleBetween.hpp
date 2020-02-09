@@ -1,15 +1,15 @@
-#include "gtest/gtest.h"
+#include <gtest/gtest.h>
 
-#include <PolyUtil.hpp>
+#include "SphericalUtil.hpp"
 
 
 TEST(SphericalUtil, computeAngleBetween) {
-	LatLng up(90, 0);
-	LatLng down(-90, 0);
-	LatLng front(0, 0);
-	LatLng right(0, 90);
-	LatLng back(0, -180);
-	LatLng left(0, -90);
+    LatLng up    = { 90.0,    0.0 };
+    LatLng down  = {-90.0,    0.0 };
+    LatLng front = {  0.0,    0.0 };
+    LatLng right = {  0.0,   90.0 };
+    LatLng back  = {  0.0, -180.0 };
+    LatLng left  = {  0.0,  -90.0 };
 
 	EXPECT_NEAR(SphericalUtil::computeAngleBetween(up, up),       0, 1e-6);
 	EXPECT_NEAR(SphericalUtil::computeAngleBetween(down, down),   0, 1e-6);

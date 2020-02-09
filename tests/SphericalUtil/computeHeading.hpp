@@ -1,19 +1,19 @@
-#include "gtest/gtest.h"
+#include <gtest/gtest.h>
 
-#include <PolyUtil.hpp>
+#include "SphericalUtil.hpp"
 
 
 TEST(SphericalUtil, computeHeading) {
-	LatLng up(90, 0);
-	LatLng down(-90, 0);
-	LatLng front(0, 0);
-	LatLng right(0, 90);
-	LatLng back(0, -180);
-	LatLng left(0, -90);
+    LatLng up    = { 90.0,    0.0 };
+    LatLng down  = {-90.0,    0.0 };
+    LatLng front = {  0.0,    0.0 };
+    LatLng right = {  0.0,   90.0 };
+    LatLng back  = {  0.0, -180.0 };
+    LatLng left  = {  0.0,  -90.0 };
 
 	// Opposing vertices for which there is a result
 	EXPECT_NEAR(SphericalUtil::computeHeading(up, down), -180, 1e-6);
-	EXPECT_NEAR(SphericalUtil::computeHeading(down, up), 0, 1e-6);
+	EXPECT_NEAR(SphericalUtil::computeHeading(down, up),    0, 1e-6);
 
 	// Adjacent vertices for which there is a result
 	EXPECT_NEAR(SphericalUtil::computeHeading(front, up), 0, 1e-6);
