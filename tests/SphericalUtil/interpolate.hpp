@@ -15,7 +15,6 @@ TEST(SphericalUtil, interpolate) {
     LatLng up    = { 90.0,    0.0 };
     LatLng down  = {-90.0,    0.0 };
     LatLng front = {  0.0,    0.0 };
-    LatLng right = {  0.0,   90.0 };
     LatLng back  = {  0.0, -180.0 };
     LatLng left  = {  0.0,  -90.0 };
 

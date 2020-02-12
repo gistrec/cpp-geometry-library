@@ -11,24 +11,24 @@ TEST(SphericalUtil, computeHeading) {
     LatLng back  = {  0.0, -180.0 };
     LatLng left  = {  0.0,  -90.0 };
 
-	// Opposing vertices for which there is a result
-	EXPECT_NEAR(SphericalUtil::computeHeading(up, down), -180, 1e-6);
-	EXPECT_NEAR(SphericalUtil::computeHeading(down, up),    0, 1e-6);
+    // Opposing vertices for which there is a result
+    EXPECT_NEAR(SphericalUtil::computeHeading(up, down), -180, 1e-6);
+    EXPECT_NEAR(SphericalUtil::computeHeading(down, up),    0, 1e-6);
 
-	// Adjacent vertices for which there is a result
-	EXPECT_NEAR(SphericalUtil::computeHeading(front, up), 0, 1e-6);
-	EXPECT_NEAR(SphericalUtil::computeHeading(right, up), 0, 1e-6);
-	EXPECT_NEAR(SphericalUtil::computeHeading(back, up),  0, 1e-6);
-	EXPECT_NEAR(SphericalUtil::computeHeading(down, up),  0, 1e-6);
+    // Adjacent vertices for which there is a result
+    EXPECT_NEAR(SphericalUtil::computeHeading(front, up), 0, 1e-6);
+    EXPECT_NEAR(SphericalUtil::computeHeading(right, up), 0, 1e-6);
+    EXPECT_NEAR(SphericalUtil::computeHeading(back, up),  0, 1e-6);
+    EXPECT_NEAR(SphericalUtil::computeHeading(down, up),  0, 1e-6);
 
-	EXPECT_NEAR(SphericalUtil::computeHeading(front, down), -180, 1e-6);
-	EXPECT_NEAR(SphericalUtil::computeHeading(right, down), -180, 1e-6);
-	EXPECT_NEAR(SphericalUtil::computeHeading(back, down),  -180, 1e-6);
-	EXPECT_NEAR(SphericalUtil::computeHeading(left, down),  -180, 1e-6);
+    EXPECT_NEAR(SphericalUtil::computeHeading(front, down), -180, 1e-6);
+    EXPECT_NEAR(SphericalUtil::computeHeading(right, down), -180, 1e-6);
+    EXPECT_NEAR(SphericalUtil::computeHeading(back, down),  -180, 1e-6);
+    EXPECT_NEAR(SphericalUtil::computeHeading(left, down),  -180, 1e-6);
 
-	EXPECT_NEAR(SphericalUtil::computeHeading(right, front), -90, 1e-6);
-	EXPECT_NEAR(SphericalUtil::computeHeading(left, front),   90, 1e-6);
+    EXPECT_NEAR(SphericalUtil::computeHeading(right, front), -90, 1e-6);
+    EXPECT_NEAR(SphericalUtil::computeHeading(left, front),   90, 1e-6);
 
-	EXPECT_NEAR(SphericalUtil::computeHeading(front, right), 90, 1e-6);
-	EXPECT_NEAR(SphericalUtil::computeHeading(back, right), -90, 1e-6);
+    EXPECT_NEAR(SphericalUtil::computeHeading(front, right), 90, 1e-6);
+    EXPECT_NEAR(SphericalUtil::computeHeading(back, right), -90, 1e-6);
 }

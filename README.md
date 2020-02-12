@@ -24,7 +24,6 @@ C++ Geometry Library provides utility functions for the computation of geometric
 
 * [Spherical](https://developers.google.com/maps/documentation/javascript/reference#spherical) contains spherical geometry utilities allowing you to compute angles, distances and areas from latitudes and longitudes.
 * [Poly](https://developers.google.com/maps/documentation/javascript/reference#poly) utility functions for computations involving polygons and polylines.
-* [Encoding](https://developers.google.com/maps/documentation/javascript/reference#encoding) utilities for polyline encoding and decoding.
 
 ## Usage
 
@@ -66,9 +65,9 @@ int main() {
 
 ### PolyUtil class
 
-* [`containsLocation(LatLng point, LatLngList polygon, bool geodesic = false)`](#containsLocation)
-* [`isLocationOnEdge(LatLng point, LatLngList polygon,  double tolerance = PolyUtil::DEFAULT_TOLERANCE, bool geodesic = true)`](#isLocationOnEdge)
-* [`isLocationOnPath(LatLng point, LatLngList polyline, double tolerance = PolyUtil::DEFAULT_TOLERANCE, bool geodesic = true)`](#isLocationOnPath)
+* [`containsLocation(LatLng point, LatLngList polygon, bool geodesic)`](#containsLocation)
+* [`isLocationOnEdge(LatLng point, LatLngList polygon,  double tolerance, bool geodesic)`](#isLocationOnEdge)
+* [`isLocationOnPath(LatLng point, LatLngList polyline, double tolerance, bool geodesic)`](#isLocationOnPath)
 * [`distanceToLine(LatLng point, LatLng start, LatLng end)`](#distanceToLine)
 
 ### SphericalUtil class
@@ -360,6 +359,5 @@ assert(SphericalUtil::computeSignedArea(path) == -SphericalUtil::computeSignedAr
 
 ## License
 
-Geometry Library Google Maps API V3 is released under the MIT License. See the bundled
-[LICENSE](https://github.com/alexpechkarev/geometry-library/blob/master/LICENSE)
-file for details.
+Geometry Library Google Maps API V3 is released under the MIT License.
+See the bundled [LICENSE](https://github.com/alexpechkarev/geometry-library/blob/master/LICENSE) file for details.

@@ -18,8 +18,8 @@
 
 class LatLng {
 public:
-	double lat; // The latitude  of this location
-	double lng; // The longitude of this location
+    double lat; // The latitude  of this location
+    double lng; // The longitude of this location
 
     /**
      * Constructs a location with a latitude/longitude pair.
@@ -30,10 +30,14 @@ public:
     LatLng(double lat, double lng)
         : lat(lat), lng(lng) {}
 
-	bool operator==(const LatLng& other) {
-		return isCoordinateEqual(lat, other.lat) && 
+    LatLng(const LatLng & point) = default;
+
+    LatLng& operator=(const LatLng & other) = default;
+
+    bool operator==(const LatLng & other) {
+        return isCoordinateEqual(lat, other.lat) && 
                isCoordinateEqual(lng, other.lng);
-	}
+    }
 
 
 private:
