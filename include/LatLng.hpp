@@ -34,14 +34,14 @@ public:
 
     LatLng& operator=(const LatLng & other) = default;
 
-    bool operator==(const LatLng & other) {
+    bool operator==(const LatLng & other) const {
         return isCoordinateEqual(lat, other.lat) && 
                isCoordinateEqual(lng, other.lng);
     }
 
 
 private:
-    bool isCoordinateEqual(double first, double second) {
+    bool isCoordinateEqual(double first, double second) const {
         return std::fabs(first - second) < 1e-12;
     }
 };

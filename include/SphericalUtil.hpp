@@ -26,7 +26,7 @@ public:
      *
      * @return The heading in degrees clockwise from north.
      */
-    inline static double computeHeading(LatLng from, LatLng to) {
+    inline static double computeHeading(const LatLng& from, const LatLng& to) {
         // http://williams.best.vwh.net/avform.htm#Crs
         double fromLat = deg2rad(from.lat);
         double fromLng = deg2rad(from.lng);
@@ -49,7 +49,7 @@ public:
      * @param distance The distance to travel.
      * @param heading  The heading in degrees clockwise from north.
      */
-    inline static LatLng computeOffset(LatLng from, double distance, double heading) {
+    inline static LatLng computeOffset(const LatLng& from, double distance, double heading) {
         distance /= MathUtil::EARTH_RADIUS;
         heading = deg2rad(heading);
         // http://williams.best.vwh.net/avform.htm#LL
@@ -79,7 +79,7 @@ public:
      * @param distance The distance travelled, in meters.
      * @param heading  The heading in degrees clockwise from north.
      */
-    inline static LatLng computeOffsetOrigin(LatLng to, double distance, double heading) {
+    inline static LatLng computeOffsetOrigin(const LatLng& to, double distance, double heading) {
         heading = deg2rad(heading);
         distance /= MathUtil::EARTH_RADIUS;
         // http://lists.maptools.org/pipermail/proj/2008-October/003939.html
@@ -124,7 +124,7 @@ public:
      * @param fraction A fraction of the distance to travel.
      * @return The interpolated LatLng.
      */
-    inline static LatLng interpolate(LatLng from, LatLng to, double fraction) {
+    inline static LatLng interpolate(const LatLng& from, const LatLng& to, double fraction) {
         // http://en.wikipedia.org/wiki/Slerp
         double fromLat = deg2rad(from.lat);
         double fromLng = deg2rad(from.lng);
@@ -154,14 +154,14 @@ public:
      * Returns the angle between two LatLngs, in radians. This is the same as the distance
      * on the unit sphere.
      */
-    inline static double computeAngleBetween(LatLng from, LatLng to) {
+    inline static double computeAngleBetween(const LatLng& from, const LatLng& to) {
         return SphericalUtil::distanceRadians(deg2rad(from.lat), deg2rad(from.lng), deg2rad(to.lat), deg2rad(to.lng));
     }
 
     /**
      * Returns the distance between two LatLngs, in meters.
      */
-    inline static double computeDistanceBetween(LatLng from, LatLng to) {
+    inline static double computeDistanceBetween(const LatLng& from, const LatLng& to) {
         return SphericalUtil::computeAngleBetween(from, to) * MathUtil::EARTH_RADIUS;
     }
 
@@ -169,7 +169,7 @@ public:
      * Returns the length of the given path, in meters, on Earth.
      */
     template <typename LatLngList>
-    inline static double computeLength(LatLngList path) {
+    inline static double computeLength(const LatLngList& path) {
         if (path.size() < 2U) {
             return 0;
         }
@@ -194,7 +194,7 @@ public:
      * @return The path's area in square meters.
      */
     template <typename LatLngList>
-    inline static double computeArea(LatLngList path) {
+    inline static double computeArea(const LatLngList& path) {
         return abs(SphericalUtil::computeSignedArea(path));
     }
 
@@ -207,7 +207,7 @@ public:
      * @return The loop's area in square meters.
      */
     template <typename LatLngList>
-    inline static double computeSignedArea(LatLngList path) {
+    inline static double computeSignedArea(const LatLngList& path) {
         return SphericalUtil::computeSignedAreaP(path, MathUtil::EARTH_RADIUS);
     }
 
@@ -226,7 +226,7 @@ private:
      * Used by SphericalUtilTest.
      */
     template <typename LatLngList>
-    inline static double computeSignedAreaP(LatLngList path, double radius) {
+    inline static double computeSignedAreaP(const LatLngList& path, double radius) {
         size_t size = path.size();
         if (size < 3U) { return 0; }
         double total = 0;

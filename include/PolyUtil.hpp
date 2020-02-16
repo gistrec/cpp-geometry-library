@@ -32,7 +32,7 @@ public:
      * (loxodromic) segments otherwise.
      */
     template <typename LatLngList>
-    static inline bool containsLocation(LatLng point, LatLngList polygon, bool geodesic = false) {
+    static inline bool containsLocation(const LatLng& point, const LatLngList& polygon, bool geodesic = false) {
         size_t size = polygon.size();
 
         if (size == 0) {
@@ -74,7 +74,7 @@ public:
      * closing segment between the first point and the last point is included.
      */
     template <typename LatLngList>
-    static inline bool isLocationOnEdge(LatLng point, LatLngList polygon, double tolerance = PolyUtil::DEFAULT_TOLERANCE, bool geodesic = true) {
+    static inline bool isLocationOnEdge(const LatLng& point, const LatLngList& polygon, double tolerance = PolyUtil::DEFAULT_TOLERANCE, bool geodesic = true) {
         return PolyUtil::isLocationOnEdgeOrPath(point, polygon, true, geodesic, tolerance);
     }
 
@@ -86,7 +86,7 @@ public:
      * segment between the first point and the last point is not included.
      */
     template <typename LatLngList>
-    static inline bool isLocationOnPath(LatLng point, LatLngList polyline, double tolerance = PolyUtil::DEFAULT_TOLERANCE, bool geodesic = true) {
+    static inline bool isLocationOnPath(const LatLng& point, const LatLngList& polyline, double tolerance = PolyUtil::DEFAULT_TOLERANCE, bool geodesic = true) {
         return PolyUtil::isLocationOnEdgeOrPath(point, polyline, false, geodesic, tolerance);
     }
 
@@ -107,7 +107,7 @@ public:
      * poly.size()-2 if between poly[poly.size() - 2] and poly[poly.size() - 1]
      */
     template <typename LatLngList>
-    static inline bool isLocationOnEdgeOrPath(LatLng point, LatLngList poly, bool closed, bool geodesic, double toleranceEarth) {
+    static inline bool isLocationOnEdgeOrPath(const LatLng& point, const LatLngList& poly, bool closed, bool geodesic, double toleranceEarth) {
         size_t size = poly.size();
 
         if (size == 0U) {
@@ -185,7 +185,7 @@ public:
      * @param end the end of the line segment
      * @return the distance in meters (assuming spherical earth)
      */
-    static inline double distanceToLine(LatLng p, LatLng start, LatLng end) {
+    static inline double distanceToLine(const LatLng& p, const LatLng& start, const LatLng& end) {
         if (start == end) {
             return SphericalUtil::computeDistanceBetween(end, p);
         }

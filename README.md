@@ -65,7 +65,7 @@ int main() {
 
 ### PolyUtil class
 
-* [`containsLocation(LatLng point, LatLngList polygon, bool geodesic)`](#containsLocation)
+* [`containsLocation(LatLng point, LatLngList polygon,  bool geodesic)`](#containsLocation)
 * [`isLocationOnEdge(LatLng point, LatLngList polygon,  double tolerance, bool geodesic)`](#isLocationOnEdge)
 * [`isLocationOnPath(LatLng point, LatLngList polyline, double tolerance, bool geodesic)`](#isLocationOnPath)
 * [`distanceToLine(LatLng point, LatLng start, LatLng end)`](#distanceToLine)
@@ -113,13 +113,13 @@ std::array<LatLng, 1U> northPole = { {90, 0} };
 ### PolyUtil functions
 
 <a name="containsLocation"></a>
-**`PolyUtil::containsLocation(LatLng point, LatLngList polygon, bool geodesic = false)`** - Computes whether the given point lies inside the specified polygon
+**`PolyUtil::containsLocation(const LatLng& point, const LatLngList& polygon, bool geodesic = false)`** - Computes whether the given point lies inside the specified polygon
 
 * `point` - a point in geographical coordinates: latitude and longitude
 * `polygon` - a series of connected coordinates in an ordered sequence
 * `geodesic` - the polyline is composed of great circle segments if geodesic is true, and of Rhumb segments otherwise
 
-Return value: `boolean` - whether the given point lies inside the specified polygon
+Return value: `bool` - whether the given point lies inside the specified polygon
 
 ```c++
 // Around the north pole.
@@ -132,14 +132,14 @@ std::cout << PolyUtil::containsLocation(LatLng(-90, 0), aroundNorthPole); // fal
 ---
 
 <a name="isLocationOnEdge"></a>
-**`PolyUtil::isLocationOnEdge(LatLng point, LatLngList polygon, double tolerance = PolyUtil::DEFAULT_TOLERANCE, bool geodesic = true)`** - Computes whether the given point lies on or near to a polyline, or the edge of a polygon, within a specified tolerance. Returns true when the difference between the latitude and longitude of the supplied point, and the closest point on the edge, is less than the tolerance. The tolerance defaults to `0.1` meters.
+**`PolyUtil::isLocationOnEdge(const LatLng& point, const LatLngList& polygon, double tolerance = PolyUtil::DEFAULT_TOLERANCE, bool geodesic = true)`** - Computes whether the given point lies on or near to a polyline, or the edge of a polygon, within a specified tolerance. Returns true when the difference between the latitude and longitude of the supplied point, and the closest point on the edge, is less than the tolerance. The tolerance defaults to `0.1` meters.
 
 * `point` - a point in geographical coordinates: latitude and longitude
 * `polygon` - a series of connected coordinates in an ordered sequence
 * `tolerance` - tolerance value in meters
 * `geodesic` - the polyline is composed of great circle segments if geodesic is true, and of Rhumb segments otherwise
 
-Return value: `boolean` - whether the given point lies on or near the edge of a polygon
+Return value: `bool` - whether the given point lies on or near the edge of a polygon
 
 ```c++
 // On equator.
@@ -155,14 +155,14 @@ std::cout << PolyUtil::isLocationOnEdge(LatLng(0, 90 - big),   equator); // fals
 ---
 
 <a name="isLocationOnPath"></a>
-**`PolyUtil::isLocationOnPath(LatLng point, LatLngList polyline, double tolerance = PolyUtil::DEFAULT_TOLERANCE, bool geodesic = true)`** - Computes whether the given point lies on or near a polyline, within a specified tolerance in meters. The polyline is composed of great circle segments if geodesic is true, and of Rhumb segments otherwise. The polyline is not closed -- the closing segment between the first point and the last point is not included.
+**`PolyUtil::isLocationOnPath(const LatLng& point, const LatLngList& polyline, double tolerance = PolyUtil::DEFAULT_TOLERANCE, bool geodesic = true)`** - Computes whether the given point lies on or near a polyline, within a specified tolerance in meters. The polyline is composed of great circle segments if geodesic is true, and of Rhumb segments otherwise. The polyline is not closed -- the closing segment between the first point and the last point is not included.
 
 * `point` - a point in geographical coordinates: latitude and longitude
 * `polygon` - a series of connected coordinates in an ordered sequence
 * `tolerance` - tolerance value in meters
 * `geodesic` - the polyline is composed of great circle segments if geodesic is true, and of Rhumb segments otherwise
 
-Return value: `boolean` - whether the point lies on or near a polyline
+Return value: `bool` - whether the point lies on or near a polyline
 
 ```c++
 // On equator.
@@ -178,7 +178,7 @@ std::cout << PolyUtil::isLocationOnPath(LatLng(0, 90 - big),   equator); // fals
 ---
 
 <a name="distanceToLine"></a>
-**`PolyUtil::distanceToLine(LatLng p, LatLng start, LatLng end)`** - Computes the distance on the sphere between the point p and the line segment start to end.
+**`PolyUtil::distanceToLine(const LatLng& p, const LatLng& start, const LatLng& end)`** - Computes the distance on the sphere between the point p and the line segment start to end.
 
 * `point` - the point to be measured
 * `start` - the beginning of the line segment
@@ -197,7 +197,7 @@ std::cout << PolyUtil::distanceToLine(point, startLine, endLine); // 37.947946
 ### SphericalUtil functions
 
 <a name="computeHeading"></a>
-**`SphericalUtil::computeHeading(LatLng from, LatLng to)`** - Returns the heading from one LatLng to another LatLng. Headings are expressed in degrees clockwise from North within the range [-180,180).
+**`SphericalUtil::computeHeading(const LatLng& from, const LatLng& to)`** - Returns the heading from one LatLng to another LatLng. Headings are expressed in degrees clockwise from North within the range [-180,180).
 
 * `from` - a point in geographical coordinates: latitude and longitude
 * `to` - a point in geographical coordinates: latitude and longitude
@@ -215,7 +215,7 @@ std::cout << SphericalUtil::computeHeading(front, right); // +90
 ---
 
 <a name="computeOffset"></a>
-**`computeOffset(LatLng from, double distance, double heading)`** - Returns the LatLng resulting from moving a distance from an origin in the specified heading (expressed in degrees clockwise from north).
+**`SphericalUtil::computeOffset(const LatLng& from, double distance, double heading)`** - Returns the LatLng resulting from moving a distance from an origin in the specified heading (expressed in degrees clockwise from north).
 
 * `from` - the LatLng from which to start.
 * `distance` - the distance to travel.
@@ -236,7 +236,7 @@ auto back  = SphericalUtil::computeOffset(front, M_PI * MathUtil::EARTH_RADIUS, 
 ---
 
 <a name="computeOffsetOrigin"></a>
-**`computeOffsetOrigin(LatLng to, double distance, double heading)`** - Returns the location of origin when provided with a LatLng destination, meters travelled and original heading. Headings are expressed in degrees clockwise from North.
+**`SphericalUtil::computeOffsetOrigin(const LatLng& to, double distance, double heading)`** - Returns the location of origin when provided with a LatLng destination, meters travelled and original heading. Headings are expressed in degrees clockwise from North.
 
 * `from` - the destination LatLng
 * `distance` - the distance travelled, in meters.
@@ -258,7 +258,7 @@ assert(front == SphericalUtil::computeOffsetOrigin(LatLng(-45,   0), M_PI * Math
 ---
 
 <a name="interpolate"></a>
-**`interpolate(LatLng from, LatLng to, double fraction)`** - Returns the LatLng which lies the given fraction of the way between the origin LatLng and the destination LatLng.
+**`SphericalUtil::interpolate(const LatLng& from, const LatLng& to, double fraction)`** - Returns the LatLng which lies the given fraction of the way between the origin LatLng and the destination LatLng.
 
 * `from` - the LatLng from which to start.
 * `to` - the LatLng toward which to travel.
@@ -280,7 +280,7 @@ assert(LatLng(89, 0) == SphericalUtil::interpolate(up, front,  1 / 90.0));
 ---
 
 <a name="computeDistanceBetween"></a>
-**`computeDistanceBetween(LatLng from, LatLng to)`** - Returns the distance, in meters, between two LatLngs.
+**`SphericalUtil::computeDistanceBetween(const LatLng& from, const LatLng& to)`** - Returns the distance, in meters, between two LatLngs.
 
 * `from` - the first point
 * `to` - the second point
@@ -297,7 +297,7 @@ std:cout << SphericalUtil::computeDistanceBetween(up, down); // MathUtil::EARTH_
 ---
 
 <a name="computeLength"></a>
-**`computeLength(LatLngList path)`** - Returns the length of the given path, in meters, on Earth
+**`SphericalUtil::computeLength(const LatLngList& path)`** - Returns the length of the given path, in meters, on Earth
 
 * `path` - a series of connected coordinates in an ordered sequence. Any iterable containers.
 
@@ -313,7 +313,7 @@ std::cout << SphericalUtil::computeLength(latLngs2); // M_PI * MathUtil::EARTH_R
 ---
 
 <a name="computeArea"></a>
-**`computeArea(LatLngList path)`** - Returns the area of a closed path on Earth.
+**`SphericalUtil::computeArea(const LatLngList& path)`** - Returns the area of a closed path on Earth.
 
 * `path` - a closed path. Any iterable containers.
 
@@ -333,7 +333,7 @@ std::cout << SphericalUtil::computeArea(second); // M_PI * MathUtil::EARTH_RADIU
 ---
 
 <a name="computeSignedArea"></a>
-**`computeSignedArea(LatLngList path)`** - Returns the signed area of a closed path on Earth. The sign of the area may be used to determine the orientation of the path. "inside" is the surface that does not contain the South Pole.
+**`SphericalUtil::computeSignedArea(const LatLngList& path)`** - Returns the signed area of a closed path on Earth. The sign of the area may be used to determine the orientation of the path. "inside" is the surface that does not contain the South Pole.
 
 * `path` - a closed path. Any iterable containers.
 
